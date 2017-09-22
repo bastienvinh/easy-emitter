@@ -1,7 +1,7 @@
 # EasyEmitter
 
 ## Introduction
-This module is an extension to gulp. Some problem come with gulp is synchronus task. for long task we can't really define if the task can be synchrone or not and excute the nex one. So gulp-posts-events implements the default EventEmitter from NodeJS.
+Emitter is like a third party eyes that can help you execute code at perfect timming than using waterfall technics.
 
 ## Specification
 * You need NodeJS 8+ or more
@@ -11,44 +11,49 @@ This module is an extension to gulp. Some problem come with gulp is synchronus t
 
 ### => Register an event
 ```js
-gulp.register('name-event', function () {
+let emitter = require('easy-emitter');
+emitter.register('name-event', function () {
   console.log('I do this when name-event is called');
 });
 ```
 
 ### => Unregister an event
 ```js
-gulp.unregister('name-event');
+let emitter = require('easy-emitter');
+emitter.unregister('name-event');
 ```
 
 ### => Unregister an event with callback
 ```js
-gulp.unregister('name-event', function () {
+let emitter = require('easy-emitter');
+emitter.unregister('name-event', function () {
   console.log('Done after name-event has been removed')
 });
 ```
 
 ### => Active our event
 ```js
-gulp.emit('name-event');
+let emitter = require('easy-emitter');
+emitter.emit('name-event');
 ```
 
 ### => Examples of basic usage
 
 ```js
-let gulp = require('gulp-posts-events');
+let emitter = require('easy-emitter');
+let gulp = require('gulp');
 
 gulp.task('build', (done) => {
-  gulp.emit('before-build'); // we activate an event before build in asynchronous
+  emitter.emit('before-build'); // we activate an event before build in asynchronous
   // TODO do your things
   // Take big amount of time
-  gulp.emit('after-build'); // We create a function after build
+  emitter.emit('after-build'); // We create a function after build
   done();
 });
 
 gulp.task('default', () => {
   
-  gulp.register('after-build', function () => {
+  emitter.register('after-build', function () => {
     console.log('After-build event is working works');
   });
 
@@ -65,27 +70,30 @@ gulp.task('default', () => {
 </blockquote>
 
 ```js
-let gulp = require('gulp-posts-events');
+let gulp = require('gulp');
+let emitter = require('easy-emitter');
 
-gulp.task('default', () => {
+gulp.task('default', (done) => {
   
-  gulp.register('after-register', function () => {
+  emitter.register('after-register', function () => {
     console.log('event 1');
   });
 
-  gulp.register('after-register', function () => {
+  emitter.register('after-register', function () => {
     console.log('event 2');
   });
 
-  gulp.emit('after-build');
+  emitter.emit('after-build');
   // => ouput: event 1
   // =>        event 2
 
-  gulp.unregister('after-build');
+  emitter.unregister('after-build');
   // => unregister the two events
   
-  gulp.emit('after-build');
+  emitter.emit('after-build');
   // => nothing
+
+  done();
 });
 
 ```
