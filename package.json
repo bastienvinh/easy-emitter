@@ -1,11 +1,11 @@
 {
-  "name": "gulp-posts-events",
-  "version": "0.0.1",
-  "description": "Gulp extensions to manage custom events.",
+  "name": "easy-emitter",
+  "version": "1.0.0",
+  "description": "Easy Emitter is easy EventEmitter as Utils and singleton.",
   "main": "index.js",
-  "repository" : { 
-    "type" : "git",
-    "url" : "https://github.com/bastienvinh/gulp-posts-events"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bastienvinh/easy-emitter.git"
   },
   "scripts": {
     "test": "jasmine-node spec"
@@ -23,7 +23,6 @@
     "jasmine-node": "*"
   },
   "dependencies": {
-    "gulp": "*",
     "unique-string": "*"
   }
 }

@@ -1,4 +1,4 @@
-# Gulp + Events
+# EasyEmitter
 
 ## Introduction
 This module is an extension to gulp. Some problem come with gulp is synchronus task. for long task we can't really define if the task can be synchrone or not and excute the nex one. So gulp-posts-events implements the default EventEmitter from NodeJS.
