@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Gulp extensions to manage custom events.",
   "main": "index.js",
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/bastienvinh/gulp-posts-events"
+  },
   "scripts": {
     "test": "jasmine-node spec"
   },
