@@ -1,0 +1,25 @@
+{
+  "name": "gulp-posts-events",
+  "version": "0.0.1",
+  "description": "Gulp extensions to manage custom events.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec"
+  },
+  "keywords": [
+    "gulp",
+    "node",
+    "nodejs",
+    "javascript",
+    "events"
+  ],
+  "author": "Bastien VINH",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine-node": "*"
+  },
+  "dependencies": {
+    "gulp": "*",
+    "unique-string": "*"
+  }
+}
