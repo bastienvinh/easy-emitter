@@ -44,16 +44,21 @@ let emitter = require('easy-emitter');
 let gulp = require('gulp');
 
 gulp.task('build', (done) => {
-  emitter.emit('before-build'); // we activate an event before build in asynchronous
+  emitter.emit('before-build'); // we activate an event before build
+  // output : After-build event is working works
+
   // TODO do your things
-  // Take big amount of time
-  emitter.emit('after-build'); // We create a function after build
+  // Take big amount of time or not
+  // ...
+
+  emitter.emit('after-build'); // We activate an event after build
+  // => output : After-build event is working works
   done();
 });
 
 gulp.task('default', () => {
   
-  emitter.register('after-build', function () => {
+  emitter.register('after-build', ['build'], function () => {
     console.log('After-build event is working works');
   });
 
@@ -66,7 +71,7 @@ gulp.task('default', () => {
 <p>Notice : You can register as many callback for an event name.</p>
 </blockquote>
 <blockquote>
-<p>Warning : unregister will remove all registered events. If you have many callbacl registered for a particular event name, then you will have lost all of them when you will unregister the event-name.</p>
+<p>Warning : Unregister will remove all registered events. If you have many registered/declared callback for a particular event name, then you will have lost all of them when you will unregister the event-name.</p>
 </blockquote>
 
 ```js
@@ -98,6 +103,18 @@ gulp.task('default', (done) => {
 
 ```
 
+## Changelog
+
+1.0.0
+
+* Register a function to an event
+* Unregister all functions of an event
+* Emit a function
+
+1.0.1
+
+* Fix README : some nonsense vocabulary
+
 
 ## Reasons
-I got some timming issue with webpack. Since webpack destroy and replace file asynchronously  and slowly. I reload most of the time to soon. So to make a clean development with using EventEmitter or if/switch staement on 'end event'. I decide to create a postal pattern like we can find in Mobile GUI to pass information between pages.
+I got some timing issues with webpack + gulp. Since webpack destroy and replace file asynchronously and slowly. I reload most of the time to soon. So to make a clean development with using EventEmitter or if/switch staement on 'end event'. I decide to create a postal pattern like we can find in Mobile GUI to pass information between pages.

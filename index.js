@@ -1,1 +1,1 @@
-module.exports = equire('./lib/EventEmitter').instance;
+module.exports = require('./lib/EventEmitter').instance;

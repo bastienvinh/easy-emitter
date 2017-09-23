@@ -1,6 +1,6 @@
 {
-  "name": "easy-emitter",
-  "version": "1.0.0",
+  "name": "@luffysan/easy-emitter",
+  "version": "1.0.1",
   "description": "Easy Emitter is easy EventEmitter as Utils and singleton.",
   "main": "index.js",
   "repository": {
